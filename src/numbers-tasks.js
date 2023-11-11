@@ -259,10 +259,17 @@ function getCube(num) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  const nums = [0, 1];
+  if (index === 0) {
+    return 0;
+  }
+  for (let i = 1; i <= index; i += 1) {
+    nums.push(nums[i] + nums[i - 1]);
+  }
+  return nums[index];
 }
-// [ ] To do
+// [x] Ready
 /**
  * Returns the sum of all numbers from 1 to n.
  *
@@ -274,10 +281,14 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  let result = 0;
+  for (let i = 1; i <= n; i += 1) {
+    result += i;
+  }
+  return result;
 }
-// [ ] To do
+// [x] Ready
 /**
  * Returns the sum of the digits of a given number.
  *
@@ -305,14 +316,17 @@ function getSumOfDigits(num) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
-  // if (num ** (1 / 2) === Math.round(num ** (1 / 2))) {
-  //   return true;
-  // }
-  // return false;
+function isPowerOfTwo(num) {
+  let number = num;
+  while (number > 1) {
+    number /= 2;
+  }
+  if (number === 1) {
+    return true;
+  }
+  return false;
 }
-// FIXME
+// [x] Ready
 /**
  * Returns the sine of a number.
  *
@@ -469,11 +483,10 @@ function getFloatOnString(str) {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
-  // return parseInt(str, base);
+function getIntegerOnString(str, base) {
+  return Number.parseInt(str, base);
 }
-// FIXME
+// [x] Ready
 /**
  * Returns whether a number is a safe integer.
  *
@@ -485,11 +498,10 @@ function getIntegerOnString(/* str, base */) {
  * 3.5      => false
  * 2 ** 53  => false
  */
-function isSafeInteger(/* number */) {
-  throw new Error('Not implemented');
-  // return Number.isSafeInteger(number);
+function isSafeInteger(number) {
+  return Number.isSafeInteger(number);
 }
-// FIXME
+// [x] Ready
 /**
  * Returns the smallest integer less than or equal to a given number.
  *
@@ -592,13 +604,10 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
  * -1, 1 => -1 | 0 | 1
  */
-function getRandomInteger(/* min, max */) {
-  throw new Error('Not implemented');
-  // console.log(Math.round(Math.random(min, max) * 100));
-  // return Math.floor(Math.random(min, max) * 100);
+function getRandomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
 }
-// getRandomInteger(1, 2);
-// FIXME
+// [x] Ready
 /**
  * Returns the length of the hypotenuse of a right triangle.
  *
@@ -609,19 +618,10 @@ function getRandomInteger(/* min, max */) {
  * @example:
  * 3, 4 => 5
  */
-function getHypotenuse(/* a, b */) {
-  // if (Number.isFinite(a) || Number.isFinite(b)) {
-  //   const aNum = BigInt(a);
-  //   const bNum = BigInt(b);
-  //   let result = aNum * aNum + bNum * bNum;
-  //   console.log(result);
-  //   result = Math.sqrt(result);
-  //   return result;
-  // }
-  // return Math.sqrt(a ** 2 + b ** 2);
-  throw new Error('Not implemented');
+function getHypotenuse(a, b) {
+  return Math.hypot(a, b);
 }
-// FIXME
+// [x] Ready
 /**
  * Returns count of odd numbers from zero to the resulting number.
  * The resulting number is taken into account.
