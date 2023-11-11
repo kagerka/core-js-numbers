@@ -94,9 +94,10 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  console.log();
 }
+getLinearEquationRoot(5, -10);
 // [ ] To do
 /**
  * Returns an angle (in radians) between two vectors given by xi and yi,
@@ -115,10 +116,14 @@ function getLinearEquationRoot(/* a, b */) {
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const vectorScalar = x1 * x2 + y1 * y2;
+  const vectorLength1 = Math.sqrt(x1 ** 2 + y1 ** 2);
+  const vectorLength2 = Math.sqrt(x2 ** 2 + y2 ** 2);
+  const result = Math.acos(vectorScalar / (vectorLength1 * vectorLength2));
+  return result;
 }
-// [ ] To do
+// [x] Ready
 
 /**
  * Returns a last digit of a integer number.
@@ -166,10 +171,10 @@ function parseNumberFromString(value) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getParallelepipedDiagonal(a, b, c) {
+  return Math.sqrt(a ** 2 + b ** 2 + c ** 2);
 }
-// [ ] To do
+// [x] Ready
 /**
  * Returns the number rounded to specified power of 10.
  *
@@ -187,10 +192,10 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  return Math.round(num / 10 ** pow) * 10 ** pow;
 }
-// [ ] To do
+// [x] Ready
 /**
  * Returns true is the number is prime; otherwise false.
  * See: https://en.wikipedia.org/wiki/Primality_test
@@ -208,10 +213,19 @@ function roundToPowerOfTen(/* num, pow */) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  const result = [];
+  for (let i = 1; i <= n; i += 1) {
+    if (n % i === 0) {
+      result.push([i]);
+    }
+  }
+  if (result.length > 2) {
+    return false;
+  }
+  return true;
 }
-// [ ] To do
+// [x] Ready
 /**
  * Tries to convert value to number and returns it if conversion was successful;
  * otherwise returns default value passed as a second argument.
@@ -227,10 +241,14 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  const result = Number(value);
+  if (Number.isNaN(result)) {
+    return def;
+  }
+  return result;
 }
-// [ ] To do
+// [x] Ready
 /**
  * Returns the cube of the given number.
  *
